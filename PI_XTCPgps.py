@@ -10,6 +10,8 @@ with XCsoar running on a Linux desktop.
 
 Alex Ferrer 2014: added LXWP0 NMEA sentence so Xsoar (for use with Xcsoar condor driver) 
                   can take advantage of vario, IAS and Wind info
+                  
+Alex Ferrer 2020: futurize to fix incompatibility with 3.0                  
 """
 
 from XPLMProcessing import *
@@ -53,7 +55,7 @@ class SocketPlugin(object):
         try:
             self.s.connect(self.HOST)
             self.connected = True
-        except Exception, e:
+        except Exception as e:
             OutputFile.write(" Can not connect to NMEA Client on %s:%s %s \n" % (self.HOST[0],self.HOST[1], e))
             OutputFile.flush()
             self.connected = False
